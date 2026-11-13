@@ -189,6 +189,8 @@ body{
 .t-s{background:var(--mint)}
 .end .btn{justify-self:center}
 .perfect{margin:4px 0 0;font-weight:600}
+.collect{margin:4px 0 0;padding:8px 10px;background:var(--mint);box-shadow:0 0 0 2px var(--ink) inset;font-size:15px}
+.collect small{display:block;font-family:var(--display);font-size:12.5px;color:var(--ink-soft)}
 .hidden{display:none !important}
 
 /* ---------- sections ---------- */
@@ -680,7 +682,197 @@ const ITEMS = [
    whyTh:"ใช้ก๊าซให้หมดก่อน แล้วทิ้งถังขยะอันตราย", whyEn:"Use up the gas first, then put it in the hazardous bin.",
    px:[".......kk.......","......kOOk......","......kOyk......",".......kk.......",".....kkkkkk.....",".....ksSsSk.....",
        "....kkkkkkkk....","....kwbbbbBk....","....kwkbbkBk....","....kwbkkbBk....","....kwbbbbBk....","....kwbbbbBk....",
-       "....kwbbbbBk....","....kkkkkkkk...."] }
+       "....kwbbbbBk....","....kkkkkkkk...."] },
+
+ /* ---------- round 2: more items ---------- */
+ /* organic */
+ { id:"bread", bin:"organic", th:"ขนมปังเหลือ", en:"Leftover bread",
+   whyTh:"ขนมปังเหลือเป็นเศษอาหาร รวมกับเศษอาหารอื่น พยายามแยกน้ำออก", whyEn:"Leftover bread is food waste. Add it to your other food scraps.",
+   px:["....kkkkkkkk....","..kknnnnnnnnkk..",".knneeeeeeeennk.",".kneeeeeeeeeenk.",".kneeeeeeeeeenk.","..kneekeekeenk..",
+       "..knepekkepenk..","..kneeeeeeeenk..","..kneeeeeeeenk..","..kneeeeeeeenk..","..knnnnnnnnnnk..","..kkkkkkkkkkkk.."] },
+ { id:"carrot", bin:"organic", th:"เศษแครอท / เศษผัก", en:"Vegetable scraps",
+   whyTh:"เศษผักรวมกับเศษอาหาร หรือเอาไปหมักปุ๋ยเองก็ได้", whyEn:"Vegetable scraps go with food waste, or into homemade compost.",
+   px:["......G.G.G.....",".....GgGgG......","......GGG.......",".....kkkkk......","....kOOOOOk.....","....kOoOOOk.....",
+       "....kOOOOk......",".....kOoOk......",".....kOOOk......","......kOk.......","......kOk.......",".......k........"] },
+ { id:"chicken", bin:"organic", th:"กระดูกไก่ / เศษเนื้อ", en:"Chicken bone", over:{ n:"#e8a35a", N:"#b06a2c" },
+   whyTh:"เศษเนื้อและกระดูกรวมกับเศษอาหาร สะเด็ดน้ำออกก่อน", whyEn:"Meat scraps and bones go with food waste. Drain them first.",
+   px:["...........kk.kk","..........kwwkwk","..........kwwwwk",".........kwwwkk.","........kwwk....","...kkkkkwwk.....",
+       "..kNNNNNkk......",".kNnnnnNNk......","kNnnNnnnNk......","kNnnnnnNNk......","kNNnnnNNk.......",".kNNNNNk........",
+       "..kkkkk........."] },
+ { id:"deadplant", bin:"organic", th:"ต้นไม้เล็กที่ตายแล้ว", en:"Small dead plant", over:{ N:"#a67c4e", n:"#c9a46c" },
+   whyTh:"ต้นไม้ต้นเล็กรวมกับขยะเปียกได้ ส่วนต้นใหญ่ให้เรียกบริการตัดต้นไม้", whyEn:"A small plant can go with wet waste. For big trees, call a tree-cutting service.",
+   px:["....kk....kk....","...kNNk..kNNk...","...kNNNkkNNNk...","....kNNkkNNk....",".....kkNNkk.....",".......kk.......",
+       ".......kNk......","......kNk.......","......kNk.......",".....kkkkk......","....kNnNnNk.....","...kN.k.k.Nk....",
+       "..k..k...k..k..."] },
+ { id:"melon", bin:"organic", th:"เปลือกแตงโม", en:"Watermelon rind", over:{ r:"#ff8a8a" },
+   whyTh:"เปลือกผลไม้เป็นขยะอินทรีย์ เอาไปหมักทำปุ๋ยได้", whyEn:"Fruit rinds are organic waste and make good compost.",
+   px:["kkkkkkkkkkkkkkkk","krrrrrrrrrrrrrrk",".krrkrrrrrrkrrk.","..krrrrkrrrrrk..","...kwwwwwwwwk...","....kGGGGGGk....",
+       ".....kkkkkk....."] },
+
+ /* recycle */
+ { id:"milkbottle", bin:"recycle", th:"ขวดนมพลาสติก", en:"Plastic milk bottle",
+   whyTh:"ดึงฝาฟอยล์ออก ล้าง ตากให้แห้ง แล้วทิ้งรีไซเคิล", whyEn:"Pull off the foil seal, rinse it and let it dry.",
+   px:["......kkkk......","......kBBk......",".....kkkkkk.....","....kwwwwwwkkk..","...kwwwwwwwwkwk.","...kwwwwwwwwkwk.",
+       "...kwwwwwwwwkkk.","...kbbbbbbbbsk..","...kbwbbbbbbsk..","...kbbbbbbbbsk..","...kwwwwwwwwsk..","...kwwwwwwwwsk..",
+       "....kkkkkkkkk..."] },
+ { id:"milkcarton", bin:"recycle", th:"กล่องนม UHT", en:"UHT milk carton",
+   whyTh:"ดื่มให้หมด ตัดจุกพลาสติกออก ล้าง ตากแห้ง แล้วพับให้แบน", whyEn:"Drink it all, cut off the plastic spout, rinse, dry and flatten it.",
+   px:["...........k....","..........kwk...","..........kwk...","....kkkkkkkwkk..","...kbbbbbbbbbbk.","...kkkkkkkkkkkk.",
+       "...kwwwwwwwwwsk.","...kwwwwwwwwwsk.","...kwwwkwwkwwsk.","...kwwpwkkwpwsk.","...kbbbbbbbbbsk.","...kbbbbbbbbbsk.",
+       "...kkkkkkkkkkkk."] },
+ { id:"tincan", bin:"recycle", th:"กระป๋องอาหาร (เหล็ก)", en:"Food tin can",
+   whyTh:"เทเศษอาหารออก ล้างให้สะอาด แล้วทิ้งรีไซเคิล", whyEn:"Empty out the food, rinse it clean, then recycle it.",
+   px:["..kkkkkkkkkkkk..",".kssssssssssssk.",".kkkkkkkkkkkkkk.",".kwrrrrrrrrrrrk.",".kwrrkrrrrkrrrk.",".kwyyyyyyyyyyyk.",
+       ".kwrrrkkrrrrrrk.",".kwrrrrrrrrrrrk.",".kkkkkkkkkkkkkk.",".kssssssssssssk.","..kkkkkkkkkkkk.."] },
+ { id:"yogurt", bin:"recycle", th:"ถ้วยโยเกิร์ต", en:"Yogurt cup",
+   whyTh:"กินให้หมดหรือเทที่เหลือลงขยะเปียก ล้างถ้วย แล้วทิ้งรีไซเคิล", whyEn:"Finish it or tip leftovers into wet waste, then rinse the cup.",
+   px:["..kkkkkkkkkkkk..","..kssssssssssk..",".kkkkkkkkkkkkkk.","..kwwwwwwwwwwk..","..kwppppppppwk..","..kwpkppppkpwk..",
+       "...kwppkkppwk...","...kwwwwwwwwk...","....kwwwwwwk....","....kkkkkkkk...."] },
+ { id:"foilball", bin:"recycle", th:"อะลูมิเนียมฟอยล์ (ขยำเป็นก้อน)", en:"Scrunched-up foil",
+   whyTh:"ล้างเศษอาหารออก แล้วขยำรวมเป็นก้อนใหญ่ ๆ ก่อนทิ้งรีไซเคิล", whyEn:"Wash off the food and scrunch the foil into a big ball.",
+   px:[".....kkkkk......","...kkswSswkk....","..kswSssSwsSk...",".ksSwsSswSssk...",".kwsSsswSsSwk...",".ksSwsSssswSk...",
+       ".kSswSsSwsSsk...","..ksSswSssSk....","...kkSsSwSkk....",".....kkkkk......"] },
+ { id:"shampoo", bin:"recycle", th:"ขวดแชมพู", en:"Shampoo bottle",
+   whyTh:"กลั้วน้ำให้หมด แกะฉลากออก ขวดพลาสติก HDPE รีไซเคิลได้และขายได้", whyEn:"Rinse it out and peel off the label. HDPE bottles recycle well and can be sold.",
+   px:["....kkkkk.......","....kSSSSk......","......kSk.......",".....kkSkk......","....kllllLk.....","...kllllllLk....",
+       "...kwlllllLk....","...kwkllklLk....","...kwlpkplLk....","...kwlllllLk....","...kwlllllLk....","...kwlllllLk....",
+       "....kkkkkkk....."] },
+ { id:"shopbag", bin:"recycle", th:"ถุงหิ้วพลาสติก (สะอาด แห้ง)", en:"Clean, dry carrier bag",
+   whyTh:"ถุงหิ้วที่สะอาดและแห้งเป็นพลาสติก HDPE รีไซเคิลได้ ขายได้ ถ้าเปื้อนต้องล้างตากแห้งก่อน", whyEn:"A clean, dry carrier bag is HDPE plastic and can be recycled. Wash and dry it first if it's dirty.",
+   px:["...kk......kk...","..kwwk....kwwk..","..kwk......kwk..","..kwk......kwk..","..kwwkkkkkkwwk..",".kwwwwwwwwwwwwk.",
+       ".kwwwwwwwwwwwsk.",".kwwwkwwwwkwwsk.",".kwwpwwkkwwpwsk.",".kwwwwwwwwwwwsk.","..kwwwwwwwwwsk..","...kkkkkkkkkk..."] },
+
+ /* general */
+ { id:"butt", bin:"general", th:"ก้นบุหรี่", en:"Cigarette butt", over:{ o:"#f2b57a", O:"#d98a4b" },
+   whyTh:"ดับให้สนิทก่อนทิ้ง ก้นกรองเป็นพลาสติกชนิดหนึ่ง ใช้เวลาย่อยสลายกว่า 10 ปี", whyEn:"Make sure it's out. The filter is a kind of plastic that takes over 10 years to break down.",
+   px:[".kkkkkkkkkkkk...","kooookwwwwwSSk..","kOoookwwwwwwSk..",".kkkkkkkkkkkk..."] },
+ { id:"sachet", bin:"general", th:"ซองซอสมะเขือเทศ", en:"Ketchup sachet",
+   whyTh:"บีบซอสออกให้มากที่สุด แล้วทิ้งถังทั่วไป (บางพื้นที่รับซองซอสไปทำเชื้อเพลิง)", whyEn:"Squeeze out the sauce, then use the general bin. Some areas collect sachets to make fuel.",
+   px:["...kkkkkkkkkk...","...krrrrrrrrk...","...krwrrrrrrk...","...krrkrrkrrk...","...krrrkkrrrk...","...krrrrrrrrk...",
+       "...kyyyyyyyyk...","...krrrrrrrrk...","...kkkkkkkkkk..."] },
+ { id:"sponge", bin:"general", th:"ฟองน้ำล้างจาน", en:"Dish sponge",
+   whyTh:"ฟองน้ำทำจากพลาสติกหลายชนิดผสมกัน รีไซเคิลไม่ได้", whyEn:"Sponges mix several kinds of plastic, so they can't be recycled.",
+   px:[".kkkkkkkkkkkkkk.",".kGGGGGGGGGGGGk.",".kGgGgGgGgGgGGk.",".kkkkkkkkkkkkkk.",".kyyyyyyyyyyyYk.",".kyyykyyyykyyYk.",
+       ".kyypyykkyypyYk.",".kyyyyyyyyyyyYk.",".kYYYYYYYYYYYYk.",".kkkkkkkkkkkkkk."] },
+ { id:"rubberband", bin:"general", th:"หนังยาง", en:"Rubber band", over:{ O:"#e8a35a" },
+   whyTh:"ทิ้งถังทั่วไปได้ แต่ถ้ามีเยอะ เอาไปให้ร้านอาหารใช้ต่อดีกว่า", whyEn:"It goes in the general bin, but if you have lots, give them to a food shop to reuse.",
+   px:["....kkkkkkk.....","..kkOOOOOOOkk...",".kOOkkkkkkkOOk..","kOOk.......kOOk.","kOk.........kOk.","kOOk.......kOOk.",
+       ".kOOkkkkkkkOOk..","..kkOOOOOOOkk...","....kkkkkkk....."] },
+ { id:"phonecase", bin:"general", th:"เคสมือถือ", en:"Phone case",
+   whyTh:"เคสมือถือทำจากหลายวัสดุ บางชนิดรีไซเคิลไม่ได้ จึงทิ้งถังทั่วไป", whyEn:"Phone cases mix materials and some can't be recycled, so they go in the general bin.",
+   px:["...kkkkkkkkkk...","..kPPPPPPPPPPk..","..kPkkkPPPPPPk..","..kPkskPPPPPPk..","..kPkkkPPPPPPk..","..kPPPPPPPPPPk..",
+       "..kPPwwPwwPPPk..","..kPPwwwwwPPPk..","..kPPPwwwPPPPk..","..kPPPPwPPPPPk..","..kPPPPPPPPPPk..","...kkkkkkkkkk..."] },
+
+ /* hazardous (Pollution Control Department notice, 2022) */
+ { id:"paint", bin:"hazard", src:"pcd65", th:"กระป๋องสีทาบ้าน", en:"Paint can",
+   whyTh:"ปิดฝาให้สนิท ห้ามเทสีที่เหลือลงท่อ กรมควบคุมมลพิษจัดเป็นภาชนะสารเคมีอันตราย", whyEn:"Close the lid tightly and never pour paint down the drain. It counts as a hazardous chemical container.",
+   px:["..kkkkkkkkkkkk..",".kSSSSSSSSSSSSk.",".kkkkkkkkkkkkkk.",".kBBBBBBBBBBBBk.",".kBsBBsBBBsBBsk.",".kssBssssBssssk.",
+       ".kswwwwwwwwwwsk.",".kswkwwwwkwwwsk.",".kswwwkkwwwwwsk.",".kswwwwwwwwwwsk.",".kssssssssssssk.",".kkkkkkkkkkkkkk."] },
+ { id:"pesticide", bin:"hazard", src:"pcd65", th:"ขวดยาฆ่าแมลง", en:"Insecticide bottle",
+   whyTh:"ภาชนะยาฆ่าแมลงมีสารพิษตกค้าง ปิดฝาให้สนิทแล้วทิ้งขยะอันตราย", whyEn:"Insecticide containers hold toxic residue. Close it tightly and use the hazardous bin.",
+   px:[".....kkkk.......",".....kGGk.......","....kkkkkk......","...kggggggk.....","..kggggggggk....","..kgwwwwwwgk....",
+       "..kgwkwwkwgk....","..kgwwkkwwgk....","..kgwkwwkwgk....","..kgwwwwwwgk....","..kggggggggk....","...kkkkkkkk....."] },
+ { id:"coincell", bin:"hazard", src:"pcd65", th:"ถ่านกระดุม (ถ่านนาฬิกา)", en:"Button cell battery",
+   whyTh:"ถ่านกระดุมตัวเล็ก แต่เป็นขยะอันตราย เก็บรวมกับถ่านไฟฉายแล้วทิ้งถังส้ม", whyEn:"Tiny, but still hazardous. Collect them with your other batteries.",
+   px:[".....kkkkkk.....","...kksssssskk...","..ksswsssssSk...",".ksswsssssssSk..",".ksssssSssssSk..",".kssssSSSsssSk..",
+       ".ksssssSssssSk..",".kssssssssssSk..","..kSSSSSSSSSk...","...kkSSSSSSkk...",".....kkkkkk....."] },
+ { id:"tube", bin:"hazard", src:"pcd65", th:"หลอดไฟยาว (ฟลูออเรสเซนต์)", en:"Fluorescent tube",
+   whyTh:"หลอดฟลูออเรสเซนต์มีปรอท ใส่กล่องหรือห่อกันแตก ห้ามทุบหรือเจาะ", whyEn:"Fluorescent tubes contain mercury. Pack them so they won't break, and never smash them.",
+   px:[".kkkkkkkkkkkkkk.","kSkwwwwwwwwwwkSk","kSkcccccccccckSk","kSkwwwwwwwwwwkSk",".kkkkkkkkkkkkkk."] },
+ { id:"oil", bin:"hazard", src:"pcd65", th:"ขวดน้ำมันเครื่อง", en:"Motor oil bottle",
+   whyTh:"ใส่ภาชนะปิดสนิท ห้ามเทน้ำมันลงท่อหรือดินเด็ดขาด", whyEn:"Keep it sealed. Never pour oil down the drain or onto soil.",
+   px:["......kkk.......","......kYk.......",".....kkkkk......","....kyyyyyk.....","...kyyyyyyykkk..","...kyyyyyyyykyk.",
+       "...kywwwwwwykyk.","...kywwNwwwykk..","...kywNNNwwyk...","...kywNNNwwyk...","...kywwwwwwyk...","...kyyyyyyyyk...",
+       "....kkkkkkkk...."] },
+
+ /* ---------- round 3: even more items ---------- */
+ /* organic */
+ { id:"orangepeel", bin:"organic", th:"เปลือกส้ม", en:"Orange peel",
+   whyTh:"เปลือกผลไม้รวมกับเศษอาหาร หรือเอาไปหมักปุ๋ยเองก็ได้", whyEn:"Fruit peel goes with food waste, or into homemade compost.",
+   px:["..kkkkkkkkkkkk..",".kwwwwwwwwwwwwk.","kOwwwwwwwwwwwwOk","kOOwwwwwwwwwwOOk",".kOOOOOOOOOOOOk.",".kOoOOOOOOOOoOk.",
+       "..kOOOkOOkOOOk..","...kOOOkkOOOk...","....kkkkkkkk...."] },
+ { id:"lettuce", bin:"organic", th:"ใบผักกาดช้ำ", en:"Wilted lettuce",
+   whyTh:"ผักช้ำหรือผักเหลือเป็นเศษอาหาร ทิ้งถังเขียว หรือหมักปุ๋ย", whyEn:"Wilted or leftover vegetables are food waste. Green bin or compost.",
+   px:["......kkkk......","....kkgggGkk....","...kggGgggGgk...","..kgGggGgggGgk..",".kgggGgggGgggGk.",".kGggkgggkggGgk.",
+       ".kgGgggkgggGggk.","..kgGggGggGggk..","...kkgGggGgkk...",".....kkkkkk....."] },
+ { id:"corncob", bin:"organic", th:"ซังข้าวโพด", en:"Corn cob", over:{ y:"#f3e3a0", Y:"#d9b860" },
+   whyTh:"ซังข้าวโพดเป็นเศษผักผลไม้ ทิ้งรวมกับเศษอาหาร", whyEn:"A corn cob counts as fruit and vegetable scraps, so it goes with food waste.",
+   px:["......kkkk......",".....kyYyYk.....",".....kYyYyk.....",".....kyYyYk.....",".....kYyYyk.....",".....kyYyYk.....",
+       "...kGkYyYykGk...","...kGGkyYkGGk...","....kGGkkGGk....",".....kGGGGk.....","......kkkk......"] },
+ { id:"shrimp", bin:"organic", th:"เปลือกกุ้ง", en:"Shrimp shells", over:{ o:"#ffb3a0", O:"#f2785a" },
+   whyTh:"เปลือกและหัวกุ้งนับเป็นเศษอาหาร สะเด็ดน้ำแล้วทิ้งถังเขียว", whyEn:"Shrimp shells and heads count as food waste. Drain them, then use the green bin.",
+   px:["......kkkkk.....","....kkoOoOokk...","...koOoOkkkOok..","..koOok....kOk..","..kOok.....kk...","..kOok..........",
+       "..koOk..kk......","...kOOkkOOk.....","....kkOOkkOk....","......kkk.kk...."] },
+ { id:"mango", bin:"organic", th:"มะม่วงเน่า", en:"Rotten mango",
+   whyTh:"ผลไม้เน่าเป็นเศษอาหาร ทิ้งถังเขียว หรือเอาไปทำปุ๋ยหมัก", whyEn:"Rotten fruit is food waste. Green bin, or turn it into compost.",
+   px:[".....kkkkk......","...kkGGGGGkk....","..kGGyyyyyGGk...",".kGyyyyyyNyGk...",".kGyyyyyyyyyGk..",".kGyykyyykyyGk..",
+       ".kGyyyykkyyyGk..","..kGyNyyyyyyGk..","...kGGyyyyGGk...","....kkGGGGkk....","......kkkk......"] },
+
+ /* recycle */
+ { id:"plasticcup", bin:"recycle", th:"แก้วพลาสติก (ล้างแล้ว)", en:"Rinsed plastic cup",
+   whyTh:"เทน้ำและน้ำแข็งออก ซ้อนเก็บไว้ขายหรือบริจาค แล้วทิ้งรีไซเคิล", whyEn:"Tip out the drink and ice, stack the cups to sell or donate, or recycle them.",
+   px:[".kkkkkkkkkkkkkk.",".kcwccccccccCck.","..kwcccccccCck..","..kwcckcckcCck..","..kwccckkccCck..","...kwcccccCck...",
+       "...kwcccccCck...","...kwcccccCck...","....kkkkkkkk...."] },
+ { id:"foodbox", bin:"recycle", th:"กล่องอาหารพลาสติก (ล้างแล้ว)", en:"Rinsed plastic food box",
+   whyTh:"ล้างให้สะอาด ตากแห้ง ดูสัญลักษณ์รีไซเคิลใต้กล่อง แล้วทิ้งรีไซเคิล", whyEn:"Wash and dry it, check the recycling symbol underneath, then recycle it.",
+   px:["..kkkkkkkkkkkk..",".kbbbbbbbbbbbbk.",".kkkkkkkkkkkkkk.",".kcccccccccccck.",".kccckccccckcck.",".kccccckkccccck.",
+       "..kcccccccccck..","...kkkkkkkkkk..."] },
+ { id:"butane", bin:"recycle", th:"แก๊สกระป๋อง (ใช้หมดแล้ว)", en:"Empty butane canister",
+   whyTh:"กดให้หมดลมก่อน แยกฝาแล้วเก็บไว้ในที่โล่ง จากนั้นขายหรือทิ้งรีไซเคิล", whyEn:"Use it until it's completely empty and take off the cap, then sell or recycle it.",
+   px:["......kkk.......","......kSk.......",".....kkkkk......","....kSSSSSk.....","...kkkkkkkkk....","...kwOOOOOOk....",
+       "...kwOOOOOOk....","...kwwwwwwwk....","...kwkwwwkwk....","...kwwwkwwwk....","...kwOOOOOOk....","...kwOOOOOOk....",
+       "...kkkkkkkkk...."] },
+ { id:"pan", bin:"recycle", th:"กระทะเก่า (โลหะ)", en:"Old metal frying pan",
+   whyTh:"กระทะโลหะรีไซเคิลได้ แม้จะพังแล้ว หรือขายร้านรับซื้อของเก่าก็ได้", whyEn:"Metal pans are recyclable even when broken, or you can sell them to a scrap shop.",
+   px:["kkkkkkkkkk......","kssssssssskkkkkk","kSkSSSSkSkNNNNNk",".kSSkkSSk.kkkkkk","..kkkkkk........"] },
+ { id:"bottlecap", bin:"recycle", th:"ฝาขวดโลหะ (ฝาจีบ)", en:"Metal bottle cap",
+   whyTh:"แยกฝาออกจากขวดแก้ว ไม่ต้องแกะพลาสติกด้านในออก แล้วทิ้งรีไซเคิล", whyEn:"Take it off the glass bottle. No need to peel out the plastic lining.",
+   px:["..kkkkkkkkkkkk..",".krwrrrrrrrrrrk.",".krrrrkrrkrrrrk.",".krrrrrkkrrrrrk.",".kkkkkkkkkkkkkk.",".kSSkSSkSSkSSSk.",
+       "..k.k..k..k..k.."] },
+ { id:"gluestick", bin:"recycle", th:"หลอดกาวแท่ง (ใช้หมดแล้ว)", en:"Empty glue stick",
+   whyTh:"ใช้กาวให้หมด ล้างหลอดให้สะอาด แล้วทิ้งรีไซเคิล", whyEn:"Use up the glue, wash the tube clean, then recycle it.",
+   px:[".....kkkkkk.....","....kLLLLLLk....","....kllllllk....","....kkkkkkkk....","....kwwwwwyk....","....kwkwwkyk....",
+       "....kwwkkwyk....","....kwyyyyyk....","....kwyLyLyk....","....kwyyyyyk....","....kwwwwwyk....","....kSSSSSSk....",
+       "....kkkkkkkk...."] },
+
+ /* general */
+ { id:"clingfilm", bin:"general", th:"พลาสติกแรปห่ออาหาร", en:"Used cling film", over:{ O:"#e8a35a" },
+   whyTh:"แรปห่ออาหารมักเปื้อนเศษอาหาร และทำจากพลาสติกหลายชนิด จึงทิ้งถังทั่วไป", whyEn:"Cling film is usually greasy and made of mixed plastics, so it goes in the general bin.",
+   px:["....kkkkkk......","..kkcccccCkk....",".kcccwcccCcck...","kccCccccccOcck..","kcccckccckccCk..","kccOcckkccccck..",
+       ".kcccccccOcck...","..kkcccccckk....","....kkkkkk......"] },
+ { id:"fakeflower", bin:"general", th:"ดอกไม้ปลอม", en:"Artificial flower",
+   whyTh:"ดอกไม้ปลอมแต่ละส่วนทำจากหลายวัสดุ แยกยาก จึงทิ้งถังทั่วไป", whyEn:"Every part of a fake flower is a different material and hard to separate, so it goes in the general bin.",
+   px:["......kkkk......",".....kPPPPk.....","...kkkPppPkkk...","..kPPkpyypkPPk..","..kPPPpyypPPPk..","...kkkPppPkkk...",
+       ".....kPPPPk.....","......kkGk......",".......kGk......","....kk.kGk......","...kGGkkGk......","....kkkkGk......",
+       ".......kGk......",".......kkk......"] },
+ { id:"glasses", bin:"general", th:"แว่นตาเก่า", en:"Old glasses",
+   whyTh:"แว่นตาเก่าทิ้งถังทั่วไป หรือส่งไปเผาเป็นพลังงาน", whyEn:"Old glasses go in the general bin, or can be sent to be burned for energy.",
+   px:[".kkkkk....kkkkk.","kcwccCkkkkcwccCk","kccccCk..kccccCk","kccccCk..kccccCk",".kkkkk....kkkkk."] },
+ { id:"shoe", bin:"general", th:"รองเท้าเก่า", en:"Worn-out shoe",
+   whyTh:"รองเท้าพังแล้วทิ้งถังทั่วไป หรือส่งไปเผาเป็นพลังงาน", whyEn:"Worn-out shoes go in the general bin, or can be sent to be burned for energy.",
+   px:["...kkkkk........","..kbbbbbk.......","..kbwbwbbk......","..kbbwbwbbkkk...","..kbbbbbbbbbbk..",".kbbbbbbbbbbbbk.",
+       ".kwwwwwwwwwwwwk.","..kkkkkkkkkkkk.."] },
+ { id:"toothpaste", bin:"general", th:"หลอดยาสีฟัน (ตัวหลอด)", en:"Toothpaste tube",
+   whyTh:"ตัวหลอดรีไซเคิลไม่ได้ ทิ้งถังทั่วไป ส่วนฝาแยกออกไปรีไซเคิลได้", whyEn:"The tube can't be recycled, so it goes in the general bin. The cap can be recycled separately.",
+   px:[".kkkkkkkkkkk....","kwwwwwwwwwwwkkk.","kwBBwkwwwkwwkSSk","kwBBwwwkkwwwkSSk","kwwwwwwwwwwwkkk.",".kkkkkkkkkkk...."] },
+
+ /* hazardous */
+ { id:"phonebatt", bin:"hazard", src:"pcd65", th:"แบตเตอรี่มือถือ", en:"Phone battery",
+   whyTh:"แบตมือถือเป็นขยะอันตราย ห้ามแกะหรือเจาะ ถ้าบวมให้ห่อกระดาษใส่ถุงก่อน (ทิ้งจุดรับ E-waste ของ กทม. ได้ด้วย)", whyEn:"Phone batteries are hazardous. Never open or puncture one, and wrap a swollen one in paper. Bangkok's e-waste points take them too.",
+   px:["..kkkkkkkkkkkk..","..kllllllllllk..","..klwllllllllk..","..kllkllllkllk..","..kllllkkllllk..","..kllllllllllk..",
+       "..kyyyyyyyyyyk..","..kllllllllllk..","..kllllllllllk..","..kykykllllllk..","..kkkkkkkkkkkk.."] },
+ { id:"ink", bin:"hazard", src:"pcd65", th:"ตลับหมึกพิมพ์", en:"Printer ink cartridge",
+   whyTh:"ตลับหมึกมีสารเคมีอันตราย ห้ามทิ้งรวมขยะทั่วไป ส่งคืนบริษัทที่รับคืน หรือทิ้งจุดรับ E-waste ของ กทม.", whyEn:"Ink cartridges hold hazardous chemicals. Return them to a take-back scheme or a Bangkok e-waste point.",
+   px:["...kkkkkkkkkk...","...kSSSSSSSSk...","...kSkSSSSkSk...","...kSSSkkSSSk...","...kSSSSSSSSk...","...kkkkkkkkkk...",
+       "...kbbbppyyyk...","...kbbbppyyyk...","...kkkkkkkkkk...",".....kSSSSk.....","......kkkk......"] },
+ { id:"perfume", bin:"hazard", th:"สเปรย์น้ำหอม (ยังกดไม่หมด)", en:"Body spray, not empty",
+   whyTh:"สเปรย์ที่ยังกดไม่หมดลม กทม. ถือเป็นขยะอันตราย ทางที่ดีคือใช้ให้หมดก่อน", whyEn:"Bangkok counts a spray can with gas still inside as hazardous. Best to use it up first.",
+   px:["......kkk..p.p..","......kPk...p...",".....kkkkk......","....kpppppk.....","....kwpppPk.....","....kwkpkPk.....",
+       "....kwpkpPk.....","....kwpppPk.....","....kyyyyyk.....","....kwpppPk.....","....kwpppPk.....","....kkkkkkk....."] },
+ { id:"syrup", bin:"hazard", th:"ยาน้ำหมดอายุ", en:"Expired cough syrup",
+   whyTh:"ขูดชื่อบนฉลากออก ปิดฝาให้สนิท เขียนว่า 'ยาหมดอายุ' แล้วทิ้งขยะอันตราย ห้ามเทลงท่อ", whyEn:"Scratch your name off the label, close it tightly, mark it 'expired medicine', and never pour it down the drain.",
+   px:["......kkkk......","......kwwk......","......kkkk......",".....kNNNNk.....","....kNNNNNNk....","....kwwrrwwk....",
+       "....kwrrrrwk....","....kwwrrwwk....","....kNNNNNNk....","....kNnNNNNk....","....kNNNNNNk....","....kkkkkkkk...."] }
 ];
 const BY_ID = {};
 ITEMS.forEach(it => { it.img = sprite(it.px, it.over, 16); BY_ID[it.id] = it; });
@@ -690,7 +882,16 @@ const HTT_Q = {
   pet:"ขวดพลาสติกใส", can:"กระป๋องอลูมิเนียม", glass:"ขวดแก้ว", box:"กล่องกระดาษลัง", paper:"หนังสือพิมพ์", bubbletea:"ชานมไข่มุก",
   snack:"ถุงขนม", foam:"กล่องโฟม", tissue:"ทิชชู่", straw:"หลอดพลาสติก", curry:"ถุงแกง", receipt:"ใบเสร็จ", skewer:"ไม้เสียบ",
   colorbottle:"ขวดพลาสติกสี", noodlecup:"ถ้วยบะหมี่กึ่งสำเร็จรูป", battery:"ถ่านไฟฉาย", bulb:"หลอดไฟ", spray:"ขวดสเปรย์",
-  medicine:"ยา", calculator:"เครื่องคิดเลข", lighter:"ไฟแช็ก"
+  medicine:"ยา", calculator:"เครื่องคิดเลข", lighter:"ไฟแช็ก",
+  bread:"ขนมปัง", carrot:"เศษผลไม้และผัก", chicken:"เศษเนื้อสัตว์", deadplant:"ต้นไม้ที่ตายแล้ว", melon:"เศษผลไม้และผัก",
+  milkbottle:"ขวดนม", milkcarton:"กล่องนม", tincan:"กระป๋องเหล็ก", yogurt:"ถ้วยโยเกิร์ต", foilball:"อะลูมิเนียมฟอยล์",
+  shampoo:"ขวดยาสระผม", shopbag:"ถุงหิ้วพลาสติก", butt:"ก้นบุหรี่", sachet:"ซองซอส", sponge:"ฟองน้ำล้างจาน",
+  rubberband:"หนังยาง", phonecase:"เคสมือถือ", paint:"กระป๋องสี", pesticide:"ยาฆ่าแมลง", coincell:"ถ่านกระดุม",
+  tube:"ฟลูออเรสเซนต์", oil:"น้ำมันเครื่อง",
+  orangepeel:"เศษผลไม้และผัก", lettuce:"เศษผลไม้และผัก", corncob:"เศษผลไม้และผัก", shrimp:"เศษเนื้อสัตว์", mango:"เศษผลไม้และผัก",
+  plasticcup:"แก้วพลาสติก", foodbox:"กล่องอาหารพลาสติก", butane:"แก๊สกระป๋อง", pan:"กระทะโลหะ", bottlecap:"ฝาขวดโลหะ",
+  gluestick:"กาวแท่ง", clingfilm:"แรป", fakeflower:"ดอกไม้ปลอม", glasses:"แว่นตา", shoe:"รองเท้า", toothpaste:"หลอดยาสีฟัน",
+  phonebatt:"แบตเตอรี่มือถือ", ink:"ตลับหมึก", perfume:"ขวดสเปรย์ (น้ำหอม)", syrup:"ยา"
 };
 const SEARCH_ICON = sprite(["....kkkkk.......","...kcccCCk......","..kcwcccCCk.....","..kwccccCCk.....","..kcccccCCk.....",
   "..kccccCCCk.....","...kcCCCCk......","....kkkkkkk.....","..........kNk...","...........kNk..","............kNk.",
@@ -910,12 +1111,25 @@ try { const b = localStorage.getItem("sortbuddy.best"); if (b !== null) best = +
 try { soundOn = localStorage.getItem("sortbuddy.sound") !== "off"; } catch(e){}
 
 function shuffle(a){ for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i],a[j]] = [a[j],a[i]]; } return a; }
+/* "seen" = items shown in the current cycle (unseen ones are picked first, so rounds don't repeat);
+   "found" = every item the player has ever sorted (the collection counter) */
+let seen = [], found = [];
+try { seen = JSON.parse(localStorage.getItem("sortbuddy.seen") || "[]").filter(id => BY_ID[id]); } catch(e){}
+try { found = JSON.parse(localStorage.getItem("sortbuddy.found") || "[]").filter(id => BY_ID[id]); } catch(e){}
+function saveLists(){
+  try { localStorage.setItem("sortbuddy.seen", JSON.stringify(seen)); localStorage.setItem("sortbuddy.found", JSON.stringify(found)); } catch(e){}
+}
 function newRound(){
-  // two from every bin, then two more at random, so each round mixes all four colours
+  const unseenFirst = list => shuffle(list.filter(i => !seen.includes(i.id))).concat(shuffle(list.filter(i => seen.includes(i.id))));
+  // two from every bin, then two more, so each round mixes all four colours
   const picked = [];
-  BIN_ORDER.forEach(b => picked.push(...shuffle(ITEMS.filter(i => i.bin === b)).slice(0,2)));
-  const rest = shuffle(ITEMS.filter(i => !picked.includes(i))).slice(0, ROUND - picked.length);
-  return { order: shuffle(picked.concat(rest)).map(i => i.id), i:0, score:0, streak:0, results:[], phase:"ask", picked:null, line:0 };
+  BIN_ORDER.forEach(b => picked.push(...unseenFirst(ITEMS.filter(i => i.bin === b)).slice(0,2)));
+  const rest = unseenFirst(ITEMS.filter(i => !picked.includes(i))).slice(0, ROUND - picked.length);
+  const order = shuffle(picked.concat(rest)).map(i => i.id);
+  seen = Array.from(new Set(seen.concat(order)));
+  if (seen.length >= ITEMS.length) seen = order.slice();   // everything shown once: start a new cycle
+  saveLists();
+  return { order, i:0, score:0, streak:0, results:[], phase:"ask", picked:null, line:0 };
 }
 
 /* ================= sound ================= */
@@ -1101,6 +1315,7 @@ function choose(bin){
   S.picked = bin;
   S.results.push({ id: it.id, picked: bin, ok });
   if (ok){ S.score++; S.streak++; } else { S.streak = 0; }
+  if (!found.includes(it.id)){ found.push(it.id); saveLists(); }
   S.phase = "feedback";
   S.line = Math.floor(Math.random() * 3);
   flyTo(bin);
@@ -1195,6 +1410,10 @@ function render(animate){
     } else {
       end.appendChild(el("p", "perfect", "ไม่พลาดเลยสักชิ้น! · A perfect round!"));
     }
+    const left = ITEMS.length - found.length;
+    end.appendChild(el("p", "collect", `สมุดสะสม: เจอแล้ว <b>${found.length}/${ITEMS.length}</b> ชิ้น` +
+      (left > 0 ? ` · รอบหน้ามีชิ้นใหม่รออยู่!<small>Collection: ${found.length}/${ITEMS.length} items found. New ones next round!</small>`
+                : ` · ครบทุกชิ้นแล้ว เก่งมาก! 🎉<small>Collection complete: all ${ITEMS.length} items found!</small>`)));
     const again = el("button", "btn", "เล่นอีกรอบ · Play again ↺");
     again.type = "button"; again.addEventListener("click", next);
     end.appendChild(again);
@@ -1216,7 +1435,9 @@ function render(animate){
         : `✗ ต้องทิ้ง${B.colTh} · ${B.th}<small>It goes in the ${B.colEn} (${B.en})</small>`;
       box.innerHTML = `<p class="verdict">${verdict}</p><p class="why-th">${it.whyTh}</p><p class="why-en">${it.whyEn}</p>
         <a class="more" href="#how-to-ting">ดูวิธีทิ้งชิ้นนี้ใน How to ทิ้ง →</a>
-        <p class="src">ที่มา: <a href="https://greener.bangkok.go.th/waste-recycle/how-to-ting/" target="_blank" rel="noopener">How to ทิ้ง · BKK Zero Waste (กทม.)</a> · สีถัง: <a href="https://www.pcd.go.th/wp-content/uploads/2020/06/pcdnew-2020-06-04_07-52-14_466289.pdf" target="_blank" rel="noopener">กรมควบคุมมลพิษ</a></p>`;
+        <p class="src">ที่มา: ${it.src && SOURCES[it.src]
+          ? `<a href="${SOURCES[it.src][1]}" target="_blank" rel="noopener">${SOURCES[it.src][0]}</a>`
+          : `<a href="https://greener.bangkok.go.th/waste-recycle/how-to-ting/" target="_blank" rel="noopener">How to ทิ้ง · BKK Zero Waste (กทม.)</a>`} · สีถัง: <a href="https://www.pcd.go.th/wp-content/uploads/2020/06/pcdnew-2020-06-04_07-52-14_466289.pdf" target="_blank" rel="noopener">กรมควบคุมมลพิษ</a></p>`;
       box.querySelector(".more").addEventListener("click", () => searchFor(HTT_Q[it.id] || it.th));
       const nb = el("button", "btn", S.i + 1 >= total ? "ดูผลคะแนน · See score ▶" : "ชิ้นต่อไป · Next ▶");
       nb.type = "button"; nb.addEventListener("click", next);
