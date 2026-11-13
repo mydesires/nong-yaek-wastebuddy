@@ -62,6 +62,8 @@ body{
 .dots i{width:12px;height:12px;background:var(--paper);box-shadow:0 0 0 3px var(--ink) inset;display:block}
 .dots i:first-child{background:var(--pink)}
 .wtitle{flex:1;min-width:0;font-size:17px;font-weight:600;letter-spacing:.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.tbtn{display:grid;justify-items:center;line-height:1.15;padding:3px 9px 4px}
+.tbtn small{font-size:10.5px;letter-spacing:.5px;color:var(--ink-soft)}
 .tbtn.off{color:var(--ink-soft);text-decoration:line-through;background:var(--lilac)}
 .musiccredit{margin:-16px auto 0;max-width:540px;text-align:center;font-family:var(--display);font-size:12.5px;color:var(--ink-soft);display:grid;gap:6px}
 .musiccredit p{margin:0}
@@ -194,6 +196,7 @@ body{
 .hidden{display:none !important}
 
 /* ---------- sections ---------- */
+.sec-title:focus{outline:none}
 .sec-title{margin:0 0 4px;font-family:var(--display);font-size:24px;font-weight:700;text-wrap:balance}
 .sec-sub{margin:0 0 18px;color:var(--ink-soft);font-size:15px;max-width:65ch}
 
@@ -270,6 +273,56 @@ body{
   box-shadow:0 -3px 0 0 var(--ink),0 3px 0 0 var(--ink),-3px 0 0 0 var(--ink),3px 0 0 0 var(--ink),0 6px 0 0 var(--lilac);
 }
 .backbtn:hover{transform:translateY(-2px)}
+.navs{width:100%;max-width:540px;margin:0 auto;display:grid;gap:24px}
+.navbtn.colnav{background:var(--pink-soft);
+  box-shadow:0 -4px 0 0 var(--ink),0 4px 0 0 var(--ink),-4px 0 0 0 var(--ink),4px 0 0 0 var(--ink),0 10px 0 0 var(--pink)}
+
+/* ---------- collection (sticker book) ---------- */
+.colpage{display:grid;gap:0}
+.colhead{padding:14px 16px;display:grid;gap:10px}
+.colprog{margin:0;font-family:var(--display);font-size:16px;font-variant-numeric:tabular-nums}
+.colprog b{font-size:30px;line-height:1}
+.colprog > span:first-of-type{font-size:20px;color:var(--ink-soft);margin-right:6px}
+.colstars{margin-left:10px;color:#c98f12}
+.colstars b{font-size:20px}
+.bar{height:18px;background:var(--lilac);box-shadow:0 0 0 3px var(--ink) inset;padding:4px}
+.bar i{display:block;height:100%;width:0;background:var(--organic);transition:width .4s steps(8)}
+.colgroup{display:grid;gap:12px;margin-top:26px}
+.colgroup h3{margin:0;display:flex;align-items:center;gap:10px;font-size:17px}
+.colgroup h3 img{width:32px;height:32px}
+.colgroup .gc{margin-left:auto;font-family:var(--display);font-size:15px;color:var(--ink-soft);font-variant-numeric:tabular-nums}
+.tiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(92px,1fr));gap:14px 12px}
+.tile{
+  --c:var(--organic);
+  appearance:none;border:0;cursor:pointer;font-family:var(--body);color:var(--ink);background:var(--paper);
+  display:grid;justify-items:center;align-content:start;gap:4px;padding:10px 4px 8px;position:relative;
+  box-shadow:0 0 0 3px var(--ink) inset,0 5px 0 0 var(--c);transition:transform .1s;
+}
+.tile:hover{transform:translateY(-2px)}
+.tile img{width:56px;height:56px}
+.tile .tn{font-size:12.5px;line-height:1.25;text-align:center;min-height:2.5em}
+.tile.locked{background:#f3edfc;box-shadow:0 0 0 3px #cdbfe6 inset;color:var(--ink-soft)}
+.tile.locked .tn{font-family:var(--display);letter-spacing:2px}
+.tile .star{position:absolute;top:3px;right:6px;color:#e8b23a;font-size:16px;line-height:1;text-shadow:1px 1px 0 var(--ink)}
+.tile[aria-pressed="true"]{outline:3px dashed var(--pink);outline-offset:4px}
+.tile:focus-visible{outline:3px dashed var(--pink);outline-offset:4px}
+.detail{position:sticky;bottom:12px;z-index:5;margin-top:24px;padding:12px 44px 12px 12px;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;background:var(--paper)}
+.detail[hidden]{display:none}
+.detail img{width:80px;height:80px;background:#f6f0fe}
+.detail p{margin:0}
+.detail .dn{font-weight:700;font-size:18px;line-height:1.25}
+.detail .dn small{display:block;font-family:var(--display);font-weight:400;font-size:14px;color:var(--ink-soft)}
+.detail .dw{font-size:14.5px;margin-top:4px}
+.detail .de{font-size:13.5px;color:var(--ink-soft)}
+.detail .dtags{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
+.detail .dstar{font-family:var(--display);font-size:13px;color:#a8740c}
+.dclose{position:absolute;top:8px;right:8px;width:30px;height:30px;border:0;cursor:pointer;background:var(--lilac);color:var(--ink);font-family:var(--display);font-size:18px;line-height:1;box-shadow:0 0 0 2px var(--ink) inset}
+.resetbtn{justify-self:center;margin-top:30px;border:0;cursor:pointer;font-family:var(--display);font-size:13.5px;color:var(--ink-soft);background:transparent;padding:6px 12px;box-shadow:0 0 0 2px #cdbfe6 inset}
+.resetbtn.arm{background:var(--pink-soft);color:var(--ink);box-shadow:0 0 0 2px var(--ink) inset}
+.unlock{margin:0;justify-self:start;font-weight:700;font-size:14.5px;background:#fff3c4;padding:3px 10px;box-shadow:0 0 0 2px var(--ink) inset;animation:pop .35s steps(3)}
+.unlock small{font-family:var(--display);font-weight:400;color:var(--ink-soft);margin-left:6px}
+@media (max-width:460px){ .tiles{grid-template-columns:repeat(3,1fr)} .detail{grid-template-columns:auto 1fr} .detail img{width:64px;height:64px} }
+
 .credits{margin:0;padding:0 0 0 18px;font-size:13.5px;color:var(--ink-soft);display:grid;gap:2px}
 .credits a{color:var(--ink)}
 .sec-sub a{color:var(--ink)}
@@ -304,8 +357,8 @@ body{
     <header class="titlebar">
       <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
       <span class="wtitle">sort-buddy.exe</span>
-      <button id="musicBtn" class="tbtn" type="button" aria-pressed="true" title="เปิด/ปิดเพลงพื้นหลัง">♫ เพลง</button>
-      <button id="soundBtn" class="tbtn" type="button" aria-pressed="true" title="เปิด/ปิดเสียงเอฟเฟกต์">♪ เสียง</button>
+      <button id="musicBtn" class="tbtn" type="button" aria-pressed="true" title="เปิด/ปิดเพลงพื้นหลัง · Music on/off">♫ เพลง<small>Music</small></button>
+      <button id="soundBtn" class="tbtn" type="button" aria-pressed="true" title="เปิด/ปิดเสียงเอฟเฟกต์ · Sound effects on/off">♪ เสียง<small>Sound</small></button>
     </header>
 
     <div class="hud">
@@ -327,16 +380,38 @@ body{
     <div class="progress" id="progress" role="img" aria-label="ความคืบหน้า"></div>
   </section>
 
-  <a class="navbtn" href="#how-to-ting">
-    <img id="navIcon" class="px" alt="" width="48" height="48">
-    <span class="nt">How to ทิ้ง<small>ค้นหาวิธีทิ้งขยะ <span class="nItems">169</span> อย่าง · Search <span class="nItems">169</span> items</small></span>
-    <span class="arrow" aria-hidden="true">→</span>
-  </a>
+  <div class="navs">
+    <a class="navbtn colnav" href="#collection">
+      <img id="navColIcon" class="px" alt="" width="48" height="48">
+      <span class="nt">สมุดสะสม<small>ปลดล็อกแล้ว <span class="nColFound">0</span>/<span class="nColTotal">69</span> ชิ้น · Collection <span class="nColFound">0</span>/<span class="nColTotal">69</span></small></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+    <a class="navbtn" href="#how-to-ting">
+      <img id="navIcon" class="px" alt="" width="48" height="48">
+      <span class="nt">How to ทิ้ง<small>ค้นหาวิธีทิ้งขยะ <span class="nItems">169</span> อย่าง · Search <span class="nItems">169</span> items</small></span>
+      <span class="arrow" aria-hidden="true">→</span>
+    </a>
+  </div>
   <div class="musiccredit">
     <p>BGM: <a href="https://1144ghost.itch.io/cutecozy-music-pack" target="_blank" rel="noopener">"cute pack 2" by 1144ghost</a></p>
     <p>Button SFX: <a href="https://lolurio.itch.io/" target="_blank" rel="noopener">"UI SFX Menu Confirm" by lolurio</a></p>
     <p class="madeby">by gigie · เพื่อการศึกษาเท่านั้น · For educational purposes only</p>
   </div>
+ </div>
+
+ <div id="view-col" class="view" hidden>
+  <a class="backbtn" href="#game">← กลับไปเล่นเกม · Back to game</a>
+  <section class="colpage" aria-labelledby="colTitle">
+    <h2 class="sec-title" id="colTitle" tabindex="-1">สมุดสะสม · Collection</h2>
+    <p class="sec-sub">แยกขยะในเกมเพื่อปลดล็อกทีละชิ้น ชิ้นที่ยังไม่เจอจะเป็นเงาไว้ ★ คือชิ้นที่เคยตอบถูกแล้ว · Sort an item in the game to unlock it. ★ means you've sorted it correctly.</p>
+    <div class="colhead pbox">
+      <p class="colprog"><b id="colCount">0</b><span>/<span id="colTotal">69</span></span> ปลดล็อกแล้ว · unlocked <span class="colstars">★ <b id="colStars">0</b></span></p>
+      <div class="bar" role="img" id="colBarWrap"><i id="colBar"></i></div>
+    </div>
+    <div id="colGroups"></div>
+    <div class="detail pbox" id="colDetail" aria-live="polite" hidden></div>
+    <button id="colReset" class="resetbtn" type="button">ล้างสมุดสะสม · Reset collection</button>
+  </section>
  </div>
 
  <div id="view-htt" class="view" hidden>
@@ -876,6 +951,12 @@ const ITEMS = [
 ];
 const BY_ID = {};
 ITEMS.forEach(it => { it.img = sprite(it.px, it.over, 16); BY_ID[it.id] = it; });
+/* silhouettes for locked items in the collection: every pixel in one soft colour */
+const SIL = {}; Object.keys(PAL).forEach(k => { SIL[k] = "#cdbfe6"; });
+ITEMS.forEach(it => { it.sil = sprite(it.px, SIL, 16); });
+const BOOK_ICON = sprite(["...kkkkkkkkkk...","..kPPPPPPPPPPk..","..kPPPPyPPPPPk..","..kPPPyyyPPPPk..","..kPyyyyyyyPPk..",
+  "..kPPyyyyyPPPk..","..kPPyyPyyPPPk..","..kPPPPPPPPPPk..","..kPPPPPPPPPPk..","..kkkkkkkkkkkk..","..kwwwwwwwwwsk..",
+  "...kkkkkkkkkkk.."], null, 16);
 /* what to search in How to ทิ้ง for each game item */
 const HTT_Q = {
   banana:"เศษผลไม้และผัก", rice:"เศษอาหาร", fish:"เศษเนื้อสัตว์", leaf:"เศษใบไม้กิ่งไม้", egg:"เปลือกไข่", coffee:"กากกาแฟ",
@@ -1113,11 +1194,16 @@ try { soundOn = localStorage.getItem("sortbuddy.sound") !== "off"; } catch(e){}
 function shuffle(a){ for (let i = a.length - 1; i > 0; i--){ const j = Math.floor(Math.random() * (i + 1)); [a[i],a[j]] = [a[j],a[i]]; } return a; }
 /* "seen" = items shown in the current cycle (unseen ones are picked first, so rounds don't repeat);
    "found" = every item the player has ever sorted (the collection counter) */
-let seen = [], found = [];
+let seen = [], found = [], correct = [];
 try { seen = JSON.parse(localStorage.getItem("sortbuddy.seen") || "[]").filter(id => BY_ID[id]); } catch(e){}
 try { found = JSON.parse(localStorage.getItem("sortbuddy.found") || "[]").filter(id => BY_ID[id]); } catch(e){}
+try { correct = JSON.parse(localStorage.getItem("sortbuddy.correct") || "[]").filter(id => BY_ID[id]); } catch(e){}
 function saveLists(){
-  try { localStorage.setItem("sortbuddy.seen", JSON.stringify(seen)); localStorage.setItem("sortbuddy.found", JSON.stringify(found)); } catch(e){}
+  try {
+    localStorage.setItem("sortbuddy.seen", JSON.stringify(seen));
+    localStorage.setItem("sortbuddy.found", JSON.stringify(found));
+    localStorage.setItem("sortbuddy.correct", JSON.stringify(correct));
+  } catch(e){}
 }
 function newRound(){
   const unseenFirst = list => shuffle(list.filter(i => !seen.includes(i.id))).concat(shuffle(list.filter(i => seen.includes(i.id))));
@@ -1315,7 +1401,10 @@ function choose(bin){
   S.picked = bin;
   S.results.push({ id: it.id, picked: bin, ok });
   if (ok){ S.score++; S.streak++; } else { S.streak = 0; }
-  if (!found.includes(it.id)){ found.push(it.id); saveLists(); }
+  S.newUnlock = !found.includes(it.id);
+  if (S.newUnlock) found.push(it.id);
+  if (ok && !correct.includes(it.id)) correct.push(it.id);
+  saveLists();
   S.phase = "feedback";
   S.line = Math.floor(Math.random() * 3);
   flyTo(bin);
@@ -1369,6 +1458,7 @@ function render(animate){
   $("total").textContent = total;
   $("streak").textContent = S.streak;
   $("best").textContent = best === null ? "–" : best;
+  updateColCounts();
 
   let say;
   if (S.phase === "ask"){ setFace("idle"); say = S.i === 0 ? LINES.start[0] : LINES.ask[S.line % LINES.ask.length]; }
@@ -1414,6 +1504,8 @@ function render(animate){
     end.appendChild(el("p", "collect", `สมุดสะสม: เจอแล้ว <b>${found.length}/${ITEMS.length}</b> ชิ้น` +
       (left > 0 ? ` · รอบหน้ามีชิ้นใหม่รออยู่!<small>Collection: ${found.length}/${ITEMS.length} items found. New ones next round!</small>`
                 : ` · ครบทุกชิ้นแล้ว เก่งมาก! 🎉<small>Collection complete: all ${ITEMS.length} items found!</small>`)));
+    end.appendChild(el("a", "more", "เปิดสมุดสะสม · Open collection →"));
+    end.lastChild.href = "#collection"; end.lastChild.style.justifySelf = "center";
     const again = el("button", "btn", "เล่นอีกรอบ · Play again ↺");
     again.type = "button"; again.addEventListener("click", next);
     end.appendChild(again);
@@ -1433,7 +1525,8 @@ function render(animate){
       const verdict = last.ok
         ? `✓ ถูกต้อง! ${B.colTh} · ${B.th}<small>Correct: ${B.colEn} (${B.en})</small>`
         : `✗ ต้องทิ้ง${B.colTh} · ${B.th}<small>It goes in the ${B.colEn} (${B.en})</small>`;
-      box.innerHTML = `<p class="verdict">${verdict}</p><p class="why-th">${it.whyTh}</p><p class="why-en">${it.whyEn}</p>
+      box.innerHTML = `${S.newUnlock ? `<p class="unlock">✦ ปลดล็อกใหม่! ชิ้นที่ ${found.length}/${ITEMS.length}<small>New item unlocked</small></p>` : ""}
+        <p class="verdict">${verdict}</p><p class="why-th">${it.whyTh}</p><p class="why-en">${it.whyEn}</p>
         <a class="more" href="#how-to-ting">ดูวิธีทิ้งชิ้นนี้ใน How to ทิ้ง →</a>
         <p class="src">ที่มา: ${it.src && SOURCES[it.src]
           ? `<a href="${SOURCES[it.src][1]}" target="_blank" rel="noopener">${SOURCES[it.src][0]}</a>`
@@ -1468,28 +1561,114 @@ function render(animate){
 }
 
 /* ================= views: #how-to-ting opens the search page, anything else shows the game ================= */
+const VIEWS = { game:"view-game", htt:"view-htt", col:"view-col" };
+const VIEW_HASH = { game:"game", htt:"how-to-ting", col:"collection" };
+const VIEW_TITLE = { game:"น้องแยก Sort Buddy", htt:"How to ทิ้ง · น้องแยก Sort Buddy", col:"สมุดสะสม · น้องแยก Sort Buddy" };
+const viewFromHash = h => h === "#how-to-ting" ? "htt" : h === "#collection" ? "col" : "game";
 function showView(v){
-  const htt = v === "htt";
-  if ($("view-htt").hidden === !htt) return;            // already showing
-  $("view-game").hidden = htt;
-  $("view-htt").hidden = !htt;
-  document.title = htt ? "How to ทิ้ง · น้องแยก Sort Buddy" : "น้องแยก Sort Buddy";
+  if (!VIEWS[v]) v = "game";
+  if (!$(VIEWS[v]).hidden) return;                        // already showing
+  Object.keys(VIEWS).forEach(k => { $(VIEWS[k]).hidden = k !== v; });
+  document.title = VIEW_TITLE[v];
   window.scrollTo(0, 0);
-  if (htt) $("httTitle").focus({ preventScroll:true });
+  if (v === "htt") $("httTitle").focus({ preventScroll:true });
+  if (v === "col"){ renderCollection(); $("colTitle").focus({ preventScroll:true }); }
 }
-function route(){ showView(location.hash === "#how-to-ting" ? "htt" : "game"); }
+function route(){ showView(viewFromHash(location.hash)); }
 /* buttons switch the view themselves, so they work even where links to #... are blocked;
-   the address still gets #how-to-ting when the browser allows it, so the page can be linked directly */
+   the address still gets #how-to-ting / #collection when the browser allows it, so pages can be linked directly */
 document.addEventListener("click", e => {
   const a = e.target.closest && e.target.closest('a[href^="#"]');
   if (!a) return;
   e.preventDefault();
-  const htt = a.getAttribute("href") === "#how-to-ting";
-  showView(htt ? "htt" : "game");
-  try { location.hash = htt ? "how-to-ting" : "game"; } catch(err){}
+  const v = viewFromHash(a.getAttribute("href"));
+  showView(v);
+  try { location.hash = VIEW_HASH[v]; } catch(err){}
 });
 window.addEventListener("hashchange", route);
+
+/* ================= collection (sticker book) ================= */
+let colSel = null, resetArmed = false, resetTimer = null;
+const shortName = s => s.replace(/\s*\(.*?\)\s*/g, "").trim();
+function updateColCounts(){
+  document.querySelectorAll(".nColFound").forEach(n => { n.textContent = found.length; });
+  document.querySelectorAll(".nColTotal").forEach(n => { n.textContent = ITEMS.length; });
+}
+function renderCollection(){
+  updateColCounts();
+  $("colCount").textContent = found.length;
+  $("colTotal").textContent = ITEMS.length;
+  $("colStars").textContent = correct.length;
+  $("colBar").style.width = (found.length / ITEMS.length * 100).toFixed(1) + "%";
+  $("colBarWrap").setAttribute("aria-label", `ปลดล็อกแล้ว ${found.length} จาก ${ITEMS.length} ชิ้น`);
+  const box = $("colGroups"); box.innerHTML = "";
+  BIN_ORDER.forEach(b => {
+    const B = BINS[b], items = ITEMS.filter(i => i.bin === b);
+    const got = items.filter(i => found.includes(i.id)).length;
+    const g = el("div", "colgroup");
+    g.innerHTML = `<h3><img class="px" src="${B.img}" alt="" width="32" height="32">${B.colTh} · ${B.th}<span class="gc">${got}/${items.length}</span></h3>`;
+    const t = el("div", "tiles");
+    items.forEach(it => {
+      const open = found.includes(it.id);
+      const btn = el("button", "tile " + (open ? "open" : "locked"));
+      btn.type = "button"; btn.dataset.id = it.id;
+      btn.style.setProperty("--c", `var(--${b})`);
+      btn.setAttribute("aria-pressed", String(colSel === it.id));
+      btn.setAttribute("aria-label", open ? `${it.th}${correct.includes(it.id) ? " (เคยตอบถูกแล้ว)" : ""}` : "ยังไม่ปลดล็อก");
+      btn.innerHTML = `<img class="px" src="${open ? it.img : it.sil}" alt="" width="56" height="56"><span class="tn">${open ? shortName(it.th) : "???"}</span>` +
+        (correct.includes(it.id) ? `<span class="star" aria-hidden="true">★</span>` : "");
+      btn.addEventListener("click", () => {
+        colSel = it.id;
+        box.querySelectorAll(".tile").forEach(x => x.setAttribute("aria-pressed", String(x.dataset.id === colSel)));
+        renderDetail();
+      });
+      t.appendChild(btn);
+    });
+    g.appendChild(t);
+    box.appendChild(g);
+  });
+  renderDetail();
+}
+function renderDetail(){
+  const d = $("colDetail");
+  const it = colSel && BY_ID[colSel];
+  if (!it){ d.hidden = true; d.innerHTML = ""; return; }
+  d.hidden = false;
+  const close = `<button class="dclose" type="button" aria-label="ปิดรายละเอียด">×</button>`;
+  if (!found.includes(it.id)){
+    d.innerHTML = `<img class="px" src="${it.sil}" alt="" width="80" height="80">
+      <div><p class="dn">??? ยังไม่ปลดล็อก<small>Still locked</small></p>
+      <p class="dw">เล่นเกมต่อเพื่อเจอชิ้นนี้!</p><p class="de">Keep playing to find this one.</p></div>${close}`;
+  } else {
+    const B = BINS[it.bin];
+    d.innerHTML = `<img class="px" src="${it.img}" alt="" width="80" height="80">
+      <div><p class="dn">${it.th}<small>${it.en}</small></p>
+      <p class="dtags"><span class="tag ${it.bin}">${B.colTh} · ${B.th}</span>${correct.includes(it.id) ? `<span class="dstar">★ เคยตอบถูกแล้ว</span>` : `<span class="dstar">ยังไม่เคยตอบถูก ลองใหม่นะ</span>`}</p>
+      <p class="dw">${it.whyTh}</p><p class="de">${it.whyEn}</p></div>${close}`;
+  }
+  d.querySelector(".dclose").addEventListener("click", () => {
+    const was = colSel; colSel = null;
+    $("colGroups").querySelectorAll(".tile").forEach(x => x.setAttribute("aria-pressed", "false"));
+    renderDetail();
+    const t = $("colGroups").querySelector(`[data-id="${was}"]`); if (t) t.focus({ preventScroll:true });
+  });
+}
+$("colReset").addEventListener("click", () => {
+  const b = $("colReset");
+  if (!resetArmed){
+    resetArmed = true; b.classList.add("arm");
+    b.textContent = "กดอีกครั้งเพื่อยืนยันการล้าง · Tap again to confirm";
+    clearTimeout(resetTimer);
+    resetTimer = setTimeout(() => { resetArmed = false; b.classList.remove("arm"); b.textContent = "ล้างสมุดสะสม · Reset collection"; }, 4000);
+    return;
+  }
+  clearTimeout(resetTimer);
+  resetArmed = false; b.classList.remove("arm"); b.textContent = "ล้างสมุดสะสม · Reset collection";
+  found = []; correct = []; seen = []; colSel = null; saveLists();
+  renderCollection();
+});
 $("navIcon").src = SEARCH_ICON;
+$("navColIcon").src = BOOK_ICON;
 document.querySelectorAll(".nItems").forEach(n => { n.textContent = HTT.length; });
 try { const fav = document.createElement("link"); fav.rel = "icon"; fav.href = MASCOT.idle; document.head.appendChild(fav); } catch(e){}
 
